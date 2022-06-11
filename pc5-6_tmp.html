@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>pc5-6.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="prueba-corta-5-y-6">Prueba Corta 5 y 6</h1>
+<p>Estudiante: Jonder Hernández Gutiérrez<br>
+Carnet: 2018203660</p>
+<h2 id="preguntas">Preguntas</h2>
+<ol>
+<li>Autrum Transfer Protocol (ATP), es un protocolo creado durante los años 90 para el envío de mensaje (este utilizaba el puerto TCP/666), este se volvió muy popular entre las personas jóvenes de la época que tenían acceso a una red, este protocolo era capaz de transportar cualquier carácter visible ASCII, parte de lo emocionante de este protocolo era lograr enviar los mensajes de forma cifrada y el proceso era enteramente manual, lo cual quiere decir que las personas involucradas en la transmisión conocían las llaves para cifrar y descifrar mensajes. ATP se ha puesto de moda en el 2022, el problema es que ATP es un protocolo sumamente débil en términos de seguridad y además usa un puerto poco convencional como lo es TCP/666, con el fin de evaluar sí es posible implementar una versión segura de este protocolo, se le solicita responder las siguientes preguntas:
+<ul>
+<li>a. ¿Es posible enviar datos que no sean HTTPs sobre el puerto 443? Justifique su respuesta. (10 pts)</li>
+<li>b. Suponiendo que creamos el protocolo ATP over SSL (ATPs), describa un subprotocolo para el establecimiento de una conexión SSL. (40 pts)</li>
+<li>c. Si existe el protocolo ATPs, ¿Es posible transportar ATPs sobre HTTPs? Justifique su respuesta. (10 pts)</li>
+<li>d. Desde un punto de vista de firewalls, ¿Porqué sería muy conveniente usar el puerto TCP/80 en lugar de puerto TCP/666?.</li>
+</ul>
+</li>
+<li>Explique detalladamente el funcionamiento de PKI. (30 pts)</li>
+</ol>
+<h2 id="respuestas">Respuestas</h2>
+<h3 id="1-a">1. A</h3>
+<p>Si es posible enviar, como dice Tanenbaum &quot;Cuando HTTP se utiliza encima de SSL, se conoce como HTTPS (HTTP Seguro), aunque es el protocolo HTTP estándar. Sin embargo, algunas veces está disponible en un nuevo puerto (443) en lugar de en uno estándar (80)&quot; (Tanenbaum, 2003, p. 813).</p>
+<p>Además de esto el puerto 443 no es diferente de otro puerto aparte de por su uso estandarizado por lo se puede usar sin problemas para conexiones SSL .</p>
+<h3 id="1-b">1. B</h3>
+<p>Para describir el subprotocolo se usará dos nombres ficticios: Alice y Bob.Para iniciar una conexión se comienza cuando Alice envía una solicitud a Bob para que establezca la conexión esta solicitud debe contener la versión SSL que tiene Alice y sus preferencias de algoritmos criptográficos y de compresión, además contiene una marca aleatoria R<sub>A</sub> .</p>
+<p>Luego de esto Bob elige entre los algoritmos que Alice soporta y envía su marca aleatorio R<sub>B</sub>. Luego de esto envía un certificado que contiene su llave pública.</p>
+<p>Alice podra verificar la llave pública de Bob. En este punto Bob puede enviar algunos mensajes como por ejemplo solicitar el certificado de la clave pública de Alice. Cuando Bob termina envia a Alice una confirmación de que ahora es su turno.</p>
+<p>Luego de esto Alice tiene que responder a Bob con una clave premaestra encriptada con su propia llave pública. Después de esto Alice le indica a Bob que cambie al nuevo cifrado y tambien que ha terminado con el establecimiento del subprotocolo.</p>
+<p>Finalmente cuando Bob recibe la solicitud de cambio de cifrado cambia su cifrado y cuando recibe la confirmación del establecimiento del subprotocolo a su vez confirma el recibido por lo que finaliza tambien su establecimiento del subprotocolo (Tanenbaum, 2003, p. 837).</p>
+<h3 id="1-c">1. C</h3>
+<p>Si es posible transportarlo. Bastaría con empaquetar el mensaje del ATPs en el cuerpo del HTTPS y enviarlo.</p>
+<h3 id="1-d">1. D</h3>
+<p>En un Firewall el filtro de paquete de la LAN externa es el que verifica los paquetes entrantes, estos filtros son manejados por tablas configuradas por un administrador del sistema. Dentro de estas tablas se listan orígenes y destinos aceptables, orígenes y destinos bloqueados. Ya que el puerto 80 es uno de los puertos estándar más utilizados ya que sirve para publicar cualquier servicio web estándar, por esto mismo es muy probable que la tabla del filtro de LAN externa de la red donde se quiera entrar ya tenga como destino aceptable cualquier ip con el puerto 80. El puerto 666 casi no es usado por lo que seguramente la mayoría de Firewalls no van a tener el puerto 666 como puerto de destino aceptable (Tanenbaum, 2003, p. 799).</p>
+<p>Por lo anterior podemos decir que si es más conveniente usar el puerto TCP/80 en lugar del TCP/666 por la facilidad de entrada que logra el puerto 80 al ser mucho más utilizado que el puerto 666 (Tanenbaum, 2003, p. 799).</p>
+<h3 id="2">2</h3>
+<p>Una PKI tiene múltiples componentes, entre ellos usuarios, CAs, certificados y directorios. PKI proporciona una forma para estructuras sus componentes y definir estándares. Una forma simple de PKI es una jerarquía de CAs, como se muestra en la Figura 1. A continuación podemos ver una descripción más a fondo de la estructura jerárquica de la Figura 1:</p>
+<blockquote>
+<p>La CA de nivel superior, la raíz, certifica a los de segundo nivel, llamaremos a estos RAs (Autoridades Regionales) debido a que podrían cubrir alguna región geográfica, como un país o un continente. Sin embargo, este término no es estándar; de hecho, ningún término es realmente estándar para los diversos niveles del árbol. Estás RAs, a su vez, certifican a los CAs reales, las cuales emiten los certificados X.509 a organizaciones e individuos. Cuando la raíz autoriza una nueva RA, genera un certificado X.509 donde indica que ha aprobado la RA, e incluye en él la nueva clave pública de la RA, la firma y se la proporciona a la RA. De manera similar, cuando una RA aprueba una CA, produce y firma un certificado que indica su aprobación y que contiene la clave pública de la CA Tanenbaum, 2003, p. 791).</p>
+</blockquote>
+<p>Figura 1: (a) Una PKI jerárquica. (b) Una cadena de certificados.
+<img src="https://raw.githubusercontent.com/Eterst/Redes-2022-01-TEC/main/cas.png" alt="CAs">
+Nota. De Tanenbaum [Figura], en Tanenbaum, A. Computer Networks.4ta edición. Upper Saddle River, NJ:Prentice Hall, 2003. P 769.</p>
+<p>Para explicar la funcionalidad usaremos el siguiente ejemplo. Supongamos que Alice necesita una llave pública de Bob para comunicarse con él, por lo que encuentra un certificado firmado por la CA 5, sin embargo Alice no cree como fuente fiable la CA 5. Por lo que pide que se pruebe la autenticidad y esta responderá con un certificado que obtuvo de la RA 2, en la cual contiene la llave pública de la CA 5, después de esto Alice puede verificar que el certificado de Bob realmente fue firmado por la CA5 y que por lo tanto es verdadero. (Tanenbaum, 2003, p. 791).</p>
+<h2 id="referencias">Referencias</h2>
+<ol>
+<li>Tanenbaum, A. Computer Networks.
+4ta edición. Upper Saddle River, NJ:Prentice Hall, 2003</li>
+</ol>
+
+</body>
+</html>
